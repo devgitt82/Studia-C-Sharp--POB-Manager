@@ -1,0 +1,87 @@
+﻿@using System.Web.UI.WebControls
+@using MyShip.Controllers
+@using MyShip.Models
+@model MyShip.ModelsView.CrewListViewModel
+
+@{
+    ViewBag.Title = "Crew List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crew List</h2>
+@using (Html.BeginForm("Index", "CrewList"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CrewMember)
+
+        @Html.DropDownListFor(
+            model => model.Selection,
+            new SelectList(
+                new List<Object>
+                    {
+                    new { value = 0 , text = "By Name"  },
+                    new { value = 1 , text = "By Cabin Number" },
+                    },
+                    "value",
+                    "text"), "Select Sort Order", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Change</button>
+}
+<br />
+<hr />
+
+@if (Model.Selection == 1)
+{
+    <table class="table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Cabin Number</th>
+                <th>Bunk</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Lifeboat No.</th>
+                <th>Muster Station</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model.Crew)
+            {
+                <tr>
+                    <td>@Html.ActionLink(member.Cabin.Number.ToString(), "Details", "Cabins", new { selection = member.Cabin.Id }, null)</td>
+                    <td>@member.Cabin.Bunk</td>
+                    <td>@Html.ActionLink(member.LastName, "Index", "CrewMember", new { selection = member.Id }, null)</td>
+                    <td>@member.FirstName</td>
+                    <td>@member.Cabin.Lifeboat.Number</td>
+                    <td>@member.MusterStation.Location</td>
+                </tr>
+            }
+        </tbody>
+    </table> }
+else
+{
+    <table class="table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Cabin Number</th>
+                <th>Bunk</th>
+                <th>Lifeboat No.</th>
+                <th>Muster Station</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model.Crew)
+            {
+                <tr>
+                    <td>@Html.ActionLink(member.LastName, "Index", "CrewMember", new { selection = member.Id }, null)</td>
+                    <td>@member.FirstName</td>
+                    <td>@Html.ActionLink(member.Cabin.Number.ToString(), "Details", "Cabins", new { selection = member.Cabin.Id }, null)</td>
+                    <td>@member.Cabin.Bunk</td>
+                    <td>@member.Cabin.Lifeboat.Number</td>
+                    <td>@member.MusterStation.Location</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,140 @@
+﻿@model MyShip.ModelsView.CrewMemberViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crew Member</h2>
+@if (Model.CrewMember.IsOnBoard != true)
+{
+    using (Html.BeginForm("SignOn", "CrewMember"))
+    {
+        @Html.HiddenFor(c => c.CrewMember.Id, new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary">SignOn</button>
+    }
+}
+@if (Model.CrewMember.IsOnBoard == true && Model.CrewMember.CabinId != null)
+{
+    using (Html.BeginForm("SignOff", "CrewMember"))
+    {
+        @Html.HiddenFor(c => c.CrewMember.Id, new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary">SignOff</button>
+    }
+}
+
+<br />
+@Html.ActionLink("Certificates", "Index", "Certificate", routeValues: new { id = Model.CrewMember.Id }, htmlAttributes: new { @class = " btn btn-primary" })
+
+<br />
+@if (Model.CrewMember.IsOnBoard == true)
+{
+
+
+
+    using (Html.BeginForm("Save", "CrewMember"))
+
+    {
+
+        @Html.HiddenFor(c => c.CrewMember.IsOnBoard)
+
+        @Html.HiddenFor(c => c.CrewMember.Id, new { @class = "form-control" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.FirstName)
+            @Html.TextBoxFor(c => c.CrewMember.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CrewMember.FirstName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.LastName)
+            @Html.TextBoxFor(c => c.CrewMember.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CrewMember.LastName)
+        </div>
+        if (Model.CrewMember.Cabin != null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(c => c.selection)
+                @Html.DropDownListFor(model => model.selection, new SelectList(Model.Bunks), new { @class = "form-control" })
+                @Html.HiddenFor(c => c.CrewMember.CabinId, new { @class = "form-control" })
+            </div>
+        }
+        else
+        {
+            <div class="form-group ">
+                @Html.DropDownListFor(model => model.selection, new SelectList(Model.Bunks), new { @class = "form-control " })
+            </div>
+        }
+
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.MusterStationId)
+            @Html.DropDownListFor(model => model.CrewMember.MusterStationId, new SelectList(Model.MusterStations, "Id", "Location"), "Select Muster Station", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.PassportNo)
+            @Html.TextBoxFor(c => c.CrewMember.PassportNo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CrewMember.PassportNo)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.SeamansBookNo)
+            @Html.TextBoxFor(c => c.CrewMember.SeamansBookNo, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.JoinDate)
+            @Html.TextBoxFor(c => c.CrewMember.JoinDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+
+            @Html.HiddenFor(c => c.CrewMember.DisembarkDate, new { @class = "form-control d-none" })
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+}
+else
+{
+    {
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.FirstName)
+            @Html.TextBoxFor(c => c.CrewMember.FirstName, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.LastName)
+            @Html.TextBoxFor(c => c.CrewMember.LastName, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+
+            @Html.Label("Last Cabin")
+            @Html.TextBoxFor(c => c.CrewMember.LastCabin.Number, new { @class = "form-control", @readonly = "true" })
+            @Html.Label("Last Bunk")
+            @Html.TextBoxFor(c => c.CrewMember.LastCabin.Bunk, new { @class = "form-control", @readonly = "true" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.PassportNo)
+            @Html.TextBoxFor(c => c.CrewMember.PassportNo, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.SeamansBookNo)
+            @Html.TextBoxFor(c => c.CrewMember.SeamansBookNo, new { @class = "form-control", @readonly = "true" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.CrewMember.DisembarkDate)
+            @Html.TextBoxFor(c => c.CrewMember.DisembarkDate, "{0:d MMM yyyy}", new { @class = "form-control", @readonly = "true" })
+        </div>
+
+
+    }
+
+}
+<br />
+
+@using (Html.BeginForm("Remove", "CrewMember"))
+
+{
+    @Html.HiddenFor(c => c.CrewMember.Id, new { @class = "form-control" })
+    <button type="submit" class="btn btn-danger">Remove</button>
+}
+<br />

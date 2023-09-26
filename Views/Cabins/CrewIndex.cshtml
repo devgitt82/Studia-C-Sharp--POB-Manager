@@ -1,0 +1,63 @@
+﻿@using System.Web.UI.WebControls
+@using MyShip.Controllers
+@using MyShip.Models
+@model MyShip.ModelsView.CabinsViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Cabins</h2>
+<br />
+
+@using (Html.BeginForm("Index", "Cabins"))
+{
+    <div class="form-group">
+        @Html.Label("Select Option")
+
+        @Html.DropDownListFor(
+            model => model.Selection,
+            new SelectList(
+                new List<Object>
+                {
+                    new { value = 3 , text = "Empty Cabins"  },
+                    new { value = 2 , text = "Occupied cabins" },
+                    new { value = 1 , text = "All cabins" },
+                },
+                "value",
+                "text"), "Select option", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Change</button>
+}
+<br />
+<table class="table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Cabin Number</th>
+            <th>Bunk</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Lifeboat No.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kvpCabCrew in Model.CabinDictionary)
+        {
+            <tr>
+                <td>@Html.ActionLink(kvpCabCrew.Key.Number.ToString(), "Details", "Cabins", new { selection = kvpCabCrew.Key.Id }, null)</td>
+                <td>@kvpCabCrew.Key.Bunk</td>
+                @if (kvpCabCrew.Value.FirstName != null)
+                {
+                    <td>@Html.ActionLink(kvpCabCrew.Value.LastName, "Index", "CrewMember", new { selection = kvpCabCrew.Value.Id }, null)</td>
+                }
+                else
+                {
+                    <td>@kvpCabCrew.Value.LastName</td>
+                }
+                <td>@kvpCabCrew.Value.FirstName</td>
+                <td>@kvpCabCrew.Key.Lifeboat.Number</td>
+            </tr>
+        }
+    </tbody>
+</table>

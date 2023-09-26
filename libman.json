@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "defaultProvider": "filesystem",
+  "libraries": [
+    {
+      "library": "lib/",
+      "destination": "lib/",
+      "files": [
+        "libman.json.txt"
+      ]
+    }
+  ]
+}

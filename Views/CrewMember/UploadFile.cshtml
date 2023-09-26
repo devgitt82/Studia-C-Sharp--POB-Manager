@@ -1,0 +1,22 @@
+﻿@model MyShip.Models.CrewMember
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UploadFile</h2>
+
+@using (Html.BeginForm("UploadFile", "CrewMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="form-group">
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+        <br />
+        <input type="submit" value="Upload" />
+
+        @ViewBag.Message
+
+    </div>
+
+
+}  

@@ -1,0 +1,39 @@
+﻿@model MyShip.ModelsView.CrewMemberViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Crew Member</h2>
+<br />
+@using (Html.BeginForm("Add", "CrewMember"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.CrewMember.FirstName)
+        @Html.TextBoxFor(c => c.CrewMember.FirstName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CrewMember.LastName)
+        @Html.TextBoxFor(c => c.CrewMember.LastName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CrewMember.Cabin.Number)
+        @Html.DropDownListFor(model => model.selection, new SelectList(Model.Bunks), "Select Cabin", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CrewMember.MusterStationId)
+        @Html.DropDownListFor(model => model.CrewMember.MusterStationId, new SelectList(Model.MusterStations, "Id", "Location"), "Select Muster Station", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CrewMember.PassportNo)
+        @Html.TextBoxFor(c => c.CrewMember.PassportNo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.CrewMember.SeamansBookNo)
+        @Html.TextBoxFor(c => c.CrewMember.SeamansBookNo, new { @class = "form-control" })
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary">Add</button>
+}
+<br />

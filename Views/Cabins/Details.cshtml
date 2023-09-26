@@ -1,0 +1,21 @@
+﻿@model MyShip.Models.CrewMember
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Cabin.Number.ToString() @Model.Cabin.Bunk </h2>
+<table class="table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Occupied By </th>
+            <th>Lifeboat No. </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.ActionLink(Model.LastName + " " + Model.FirstName, "Index", "CrewMember", new { selection = Model.Id }, null)</td>
+            <td>@Model.Cabin.Lifeboat.Number</td>
+        </tr>
+    </tbody>
+</table>

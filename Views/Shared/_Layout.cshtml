@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - moja aplikacja platformy ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container" id="mainNavbar">
+        <div class="container navbar navbar-expand-md navbar-light bg-info ">
+            <div class="navbar-brand">
+                <a href='@Url.Action("Index", "Home")'><img src="~/Content/Img/logo.png" /></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"></button>
+            </div>
+            <div class="navbar navbar-collapse justify-content-between ">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("Lifeboats", "Index", "Lifeboats", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("Muster Stations", "Index", "MusterStations", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("CrewList", "Index", "CrewList", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item active">@Html.ActionLink("Cabins", "Index", "Cabins", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="container fixed-bottom">
+            <p>&copy; @DateTime.Now.Year - s178201 </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

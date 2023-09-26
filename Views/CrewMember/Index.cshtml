@@ -1,0 +1,23 @@
+﻿@model MyShip.Models.CrewMember
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.LastName @Model.FirstName  @ViewBag.Message  </h2>
+<ul>
+    @if (Model.Cabin != null)
+    {
+        <li>Cabin Number: @Model.Cabin.Number </li>
+        <li>Bunk: @Model.Cabin.Bunk </li>
+        <li>Lifeboat: @Model.Cabin.Lifeboat.Number</li>
+    }
+    else
+    {
+        <li>Last Cabin Number: @Model.LastCabin.Number</li>
+        <li>Last CABIN Bunk:@Model.LastCabin.Bunk  </li>
+    }
+
+    <li>MusterStation: @Model.MusterStation.Location</li>
+   
+</ul>

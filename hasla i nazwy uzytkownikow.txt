@@ -1,0 +1,5 @@
+login:	admin@statek.com 
+password: !Admin1		
+
+login: crew@statek.com	
+password: !Crew1

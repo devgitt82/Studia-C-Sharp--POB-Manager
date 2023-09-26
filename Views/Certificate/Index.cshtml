@@ -1,0 +1,58 @@
+﻿@model MyShip.ModelsView.CertificatesViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<h2>@Model.crewmember.FirstName @Model.crewmember.LastName</h2>
+<hr/>
+<h4>Add New Certificate</h4>
+
+@using (Html.BeginForm("UploadFile", "CrewMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+    <div class="form-group">
+        @Html.Hidden("id", Model.CrewId, new { @class = "form-control" })
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Upload" />
+        @ViewBag.Message
+
+    </div>
+}
+<br />
+<hr />
+<span></span>
+<h4>Crewmember Certificates:</h4>
+
+@if (Model.certsList.Count > 0)
+{
+    <table class="table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Cerificate name</th>
+                <th>------</th>
+                <th>------</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var cert in Model.certsList)
+            {
+                <tr>
+                    <td>@cert.CoCPath</td>
+                    <td>
+                        @Html.ActionLink("show", "GetCert", "Certificate", new { cert = cert.CoCPath, id = Model.CrewId}, "@class=form-control")
+                    </td>
+                    <td>
+                        @Html.ActionLink("remove", "RemoveCert", "Certificate", new { cert = cert.CoCPath, id = Model.CrewId }, "@class=form-control")
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}

@@ -1,0 +1,43 @@
+﻿@using MyShip.Models
+@model MyShip.ModelsView.FireStationsViewModel
+
+@{
+    ViewBag.Title = "Fire Stations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Fire Stations</h2>
+@using (Html.BeginForm("Index", "MusterStations"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CrewMember.MusterStationId)
+        @Html.DropDownListFor(c => c.Selection, new SelectList(Model.MusterStations, "Id", "Location"), "Select Muster Station", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Change</button>
+}
+<br />
+<table class="table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Muster Station</th>
+            <th>Cabin Number</th>
+            <th>Bunk</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Lifeboat No.</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model.Crew)
+        {
+            <tr>
+                <td>@member.MusterStation.Location</td>
+                <td>@Html.ActionLink(member.Cabin.Number.ToString(), "Details", "Cabins", new { selection = member.Cabin.Id }, null)</td>
+                <td>@member.Cabin.Bunk</td>
+                <td>@Html.ActionLink(member.LastName, "Index", "CrewMember", new { selection = member.Id }, null)</td>
+                <td>@member.FirstName</td>
+                <td>@member.Cabin.Lifeboat.Number</td>
+            </tr>
+        }
+    </tbody>
+</table>
