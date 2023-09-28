@@ -294,6 +294,10 @@
     <Compile Include="Migrations\202105231647191_CertificatesUpdated.Designer.cs">
       <DependentUpon>202105231647191_CertificatesUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309281251046_lastCorrections.cs" />
+    <Compile Include="Migrations\202309281251046_lastCorrections.Designer.cs">
+      <DependentUpon>202309281251046_lastCorrections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelsView\CabinsViewModel.cs" />
     <Compile Include="ModelsView\CertificatesViewModel.cs" />
@@ -583,6 +587,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105231647191_CertificatesUpdated.resx">
       <DependentUpon>202105231647191_CertificatesUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309281251046_lastCorrections.resx">
+      <DependentUpon>202309281251046_lastCorrections.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
