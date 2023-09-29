@@ -1,4 +1,4 @@
-# Ship Personnell On Board Manager.
+# Merchant Ship Personnell On Board Manager.
 
 POB manager ASP.NET MVC app prepared as a support to Ship's Admin regular duties on board a merchant vessel. 
 
