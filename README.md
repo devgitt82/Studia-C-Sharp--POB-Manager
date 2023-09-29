@@ -22,10 +22,8 @@ POB manager ASP.NET MVC app prepared as a support to Ship's Admin regular duties
 
 **Application login details for ordinary and admin users:**
 
-1. login: `testuser@email.com`<br>
-   password: `Biznes!@#!@#`
+1. login: `admin@statek.com`<br>
+   password: `!Admin1`
 
-2. login: `adminuser@email.com`<br>
-   password: `Biznes!@#!@#`
-   
-
+2. login: `crew@statek.com`<br>
+   password: `!Crew1`
