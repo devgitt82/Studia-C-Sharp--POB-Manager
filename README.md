@@ -4,6 +4,8 @@
 * Visual Studio
   
 **Installation**
-* Run `update-database` in package manager console
-* Run project in VS
+* Run `update-database` in Nuget package manager console 
+* Run project
 * Go to localhost:44302 on your web browser
+
+* 
