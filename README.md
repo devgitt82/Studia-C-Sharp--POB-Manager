@@ -13,7 +13,7 @@ POB manager ASP.NET MVC app prepared as a support to Ship's Admin regular duties
 * cabins and muster stations sighting
 
 **Requirements**
-* Visual Studio
+* [Visual Studio](https://visualstudio.microsoft.com/pl/vs/community/)
   
 **Installation**
 * Run `update-database` in Nuget package manager console 
