@@ -9,7 +9,7 @@ POB manager ASP.NET MVC app prepared as a support to Ship's Admin regular duties
 
 **Main features for administrator user:**
 * crew list and certificates management tools
-* cabins, muster stations and lifeboats selection and alloccation
+* cabins, muster stations plus lifeboats selection and alloccation
 * sign on sign off details tracking
 
 **Main features for regular users**
