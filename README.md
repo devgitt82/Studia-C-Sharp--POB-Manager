@@ -21,9 +21,10 @@ POB manager ASP.NET MVC app prepared as a support to Ship's Admin regular duties
 * [Visual Studio](https://visualstudio.microsoft.com/pl/vs/community/)
   
 **Installation**
-* Run `update-database` in Nuget package manager console 
-* Run project
-* Go to <code>localhost:44302</code> on your web browser
+* Clear existing solution and compile new one.
+* Run `update-database` in Nuget package manager console.
+* Run project.
+* Go to <code>localhost:44302</code> on your web browser.
 
 **Application login details for ordinary and admin users:**
 
